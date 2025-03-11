@@ -11,6 +11,10 @@ class Expense extends Model
 
     protected $fillable = ['amount', 'status_id'];
 
+    protected $attributes = [
+        'status_id' => 1,
+    ];
+
     public function status(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Status::class);
