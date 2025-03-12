@@ -14,6 +14,24 @@ class ApproverController extends Controller
         $this->approverRepository = $approverRepository;
     }
 
+    /**
+     * @OA\PathItem(
+     *     path="/api/approvers"
+     * )
+     * @OA\Post(
+     *     path="/api/approvers",
+     *     summary="Create Approver",
+     *     security={{"jwt_auth":{}}},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="name", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(response=201, description="Approver created"),
+     *     @OA\Response(response=401, description="Unauthorized")
+     * )
+     */
     public function store(ApproverRequest $request)
     {
         $validatedData = $request->validated();
